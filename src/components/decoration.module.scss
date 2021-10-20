@@ -1,0 +1,101 @@
+.decorationlogin {
+    display: none;
+    position: absolute;
+    top: 0;
+    z-index: -1000;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    @media screen and (min-width: 650px){
+      display: flex;
+      min-height: 1024px;
+      height: 100%;
+    }
+    @media screen and (min-width: 650px){
+      min-height: 850px;
+    }
+    //?dec-spot ----------------------------------
+    .decspot {
+      display: none;
+      @media screen and (min-width: 650px) {
+        display: flex;
+        position: absolute;
+        background-repeat: no-repeat;
+        top: 461px;
+        right: -32px;
+        width: 553px;
+        height: 750px;
+        background-image: url('../img/Ellipse\ 1.png');
+      }
+      @media screen and (min-width: 1100px) {
+        top: 0px;
+        right: 0px;
+        width: 715px;
+        height: 849px;
+        background-image: url('../img/Ellipse\ 1.png');
+      }
+    }
+    //?dec-strawberry ----------------------------------
+    .decstrawberry {
+      display: none;
+      @media screen and (min-width: 650px) {
+        display: flex;
+        position: absolute;
+        background-repeat: no-repeat;
+        top: 412px;
+        right: -66px;
+        width: 370px;
+        height: 382px;
+        background-image: url('../img/Polygon\ 13.png');
+      }
+      @media screen and (min-width: 1100px) {
+        top: 165px;
+        right: 27px;
+        width: 362px;
+        height: 374px;
+        background-image: url('../img/Polygon\ 13.png');
+      }
+    }
+    //?dec-leaves ----------------------------------
+    .decleaves {
+      display: none;
+      @media screen and (min-width: 650px) {
+        display: flex;
+        position: absolute;
+        background-repeat: no-repeat;
+        top: -97px;
+        right: 12px;
+        width: 740px;
+        height: 842px;
+        background-image: url('../img/Polygon\ 14.png');
+      }
+      @media screen and (min-width: 1100px) {
+        top: -26px;
+        right: 250px;
+        width: 746px;
+        height: 846px;
+        background-image: url('../img/Polygon\ 14.png');
+      }
+    }
+    //?dec-banana ----------------------------------
+    .decbanana {
+      display: none;
+      @media screen and (min-width: 650px) {
+        display: flex;
+        position: absolute;
+        background-repeat: no-repeat;
+        top: 593px;
+        right: -249px;
+        width: 740px;
+        height: 527px;
+        background-image: url('../img/Rectangle\ 27.png');
+      }
+      @media screen and (min-width: 1100px) {
+        top: 366px;
+        right: -204px;
+        width: 773px;
+        height: 552px;
+        background-image: url('../img/Rectangle\ 27.png');
+      }
+    }
+  }
