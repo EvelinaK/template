@@ -1,0 +1,222 @@
+// .decoration {
+//     display: none;
+//     position: absolute;
+//     top: 0;
+//     z-index: -1000;
+//     width: 100%;
+//     height: 100%;
+//     overflow: hidden;
+//     @media screen and (min-width: 650px){
+//       display: block;
+//       min-height: 1024px;
+//       height: 100%;
+//     }
+//     @media screen and (min-width: 650px){
+//       min-height: 850px;
+//     }
+//     //?dec-spot ----------------------------------
+//     .decspot {
+//       display: none;
+//       @media screen and (min-width: 650px) {
+//         display: block;
+//         position: absolute;
+//         background-repeat: no-repeat;
+//         top: 461px;
+//         right: -32px;
+//         width: 553px;
+//         height: 750px;
+//         background-image: url('../../image/decor/Ellipse\ 1.svg');
+//       }
+//       @media screen and (min-width: 1100px) {
+//         top: 0px;
+//         right: 0px;
+//         width: 715px;
+//         height: 849px;
+//         background-image: url('../../image/decor/Ellipse\ 1.svg');
+//       }
+//     }
+//     //?dec-strawberry ----------------------------------
+//     .decstrawberry {
+//       display: none;
+//       @media screen and (min-width: 650px) {
+//         display: block;
+//         position: absolute;
+//         background-repeat: no-repeat;
+//         top: 412px;
+//         right: -66px;
+//         width: 370px;
+//         height: 382px;
+//         background-image: url('../../image/decor/Polygon\ 13.svg');
+//       }
+//       @media screen and (min-width: 1100px) {
+//         top: 165px;
+//         right: 27px;
+//         width: 362px;
+//         height: 374px;
+//         background-image: url('../../image/decor/Polygon\ 13.svg');
+//       }
+//     }
+//     //?dec-leaves ----------------------------------
+//     .decleaves {
+//       display: none;
+//       @media screen and (min-width: 650px) {
+//         display: block;
+//         position: absolute;
+//         background-repeat: no-repeat;
+//         top: -97px;
+//         right: 12px;
+//         width: 740px;
+//         height: 842px;
+//         background-image: url('../../image/decor/Polygon\ 14.svg');
+//       }
+//       @media screen and (min-width: 1100px) {
+//         top: -26px;
+//         right: 250px;
+//         width: 746px;
+//         height: 846px;
+//         background-image: url('../../image/decor/Polygon\ 14.svg');
+//       }
+//     }
+//     //?dec-banana ----------------------------------
+//     .decbanana {
+//       display: none;
+//       @media screen and (min-width: 650px) {
+//         display: block;
+//         position: absolute;
+//         background-repeat: no-repeat;
+//         top: 593px;
+//         right: -249px;
+//         width: 740px;
+//         height: 527px;
+//         background-image: url('../../image/decor/Rectangle\ 27.svg');
+//       }
+//       @media screen and (min-width: 1100px) {
+//         top: 366px;
+//         right: -204px;
+//         width: 773px;
+//         height: 552px;
+//         background-image: url('../../image/decor/Rectangle\ 27.svg');
+//       }
+//     }
+//   }
+
+
+@mixin for-size($range) {
+  $mobile: 320px;
+  $tablet: 768px;
+  $desktop: 1280px;
+
+  @if $range == mobile-only {
+    @media (max-width: #{$mobile}) {
+      @content;
+    }
+  } @else if $range == mobile {
+    @media (min-width: $mobile) {
+      @content;
+    }
+  } @else if $range == tablet-only {
+    @media (max-width: #{$tablet - 1}) {
+      @content;
+    }
+  } @else if $range == tablet {
+    @media (min-width: $tablet) {
+      @content;
+    }
+  } @else if $range == desktop-only {
+    @media (max-width: #{$desktop - 1}) {
+      @content;
+    }
+  } @else if $range == desktop {
+    @media (min-width: $desktop) {
+      @content;
+    }
+  }
+}
+
+@mixin flexbox($jc: center, $ai: center) {
+  display: flex;
+  justify-content: $jc;
+  align-items: $ai;
+}
+
+@mixin font(
+  $weight,
+  $size,
+  $line-height,
+  $font-family: $primary-font,
+  $letter-spacing: $primary-letter-spacing
+) {
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line-height;
+  font-family: $font-family;
+  letter-spacing: $letter-spacing;
+}
+
+.background {
+  position: absolute;
+  // position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  @include for-size(tablet) {
+    min-height: 100vh;
+    // background-image: url('../../assets/pictures/shapeGrayAuthTablet.svg');
+    background-position: bottom 0px right 0px;
+    background-repeat: no-repeat;
+    background-size: 70% auto;
+  }
+
+  @include for-size(desktop) {
+    min-height: 100vh;
+    // background-image: url('../../assets/pictures/shapeGrayAuth.svg');
+    background-position: bottom 0px right 0px;
+    background-repeat: no-repeat;
+    background-size: 62% auto;
+  }
+}
+
+.strowberry {
+  @include for-size(tablet) {
+    display: block;
+    position: absolute;
+    right: 0px;
+    bottom: -60px;
+    pointer-events: none;
+  }
+  @include for-size(desktop) {
+    right: -3px;
+    bottom: -6px;
+  }
+}
+
+.banana {
+  @include for-size(tablet) {
+    display: block;
+    position: absolute;
+    left: -15px;
+    bottom: 118px;
+    pointer-events: none;
+  }
+  @include for-size(desktop) {
+    right: -220px;
+    bottom: -50px;
+  }
+}
+
+.leaves {
+  @include for-size(tablet) {
+    display: block;
+    position: absolute;
+    right: 140px;
+    top: 250px;
+    pointer-events: none;
+  }
+  @include for-size(desktop) {
+   right: 86px;
+    top: 415px;
+  }
+}
