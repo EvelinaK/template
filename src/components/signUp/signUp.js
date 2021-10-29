@@ -1,4 +1,5 @@
 import  React ,{ useState} from 'react';
+import { useDispatch } from 'react-redux';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
@@ -20,21 +21,25 @@ import facebook from "../../image/icons/facebook.svg"
 import PermIdentityIcon from '@material-ui/icons/PermIdentity';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-
+import  ops  from '../../redux/auth/auth-operations';
 import { Formik, Field, Form, ErrorMessage  } from 'formik';
 import * as yup from "yup";
 
 
 
 const signUpSchema = yup.object().shape({
-  name: yup.string().required("This field is required."),
+  name: yup
+  .string()
+  .min(3, 'min 6 symbol')
+  .max(20, 'max 20 symbol')
+  .required("This field is required."),
   email: yup
     .string()
     .email("Invalid email")
     .required("This field is required."),
   password: yup
     .string()
-    .min(6, "Password is too short.")
+    .min(8, "Password is too short.")
     .max(20, "Password is too long.")
     .matches(
             /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
@@ -142,7 +147,7 @@ const signUpSchema = yup.object().shape({
 
 const SignUp = () => {
   const classes = style()
- 
+  const dispatch = useDispatch();
   const initialValues = {
     name: "",
     email: "",
@@ -151,12 +156,17 @@ const SignUp = () => {
 };
 
 
-  function onSubmit( event ,values, { setStatus, setSubmitting }) {
-    event.preventDefault();
-    setStatus();
-
+  function onSubmit(values) {
+    
+    debugger
     console.log(values)
+    alert(JSON.stringify(values, null, 2));
+;
+
+   console.log(values)
      console.log('submit')
+  
+    dispatch(ops.register(values));
   }
 
 
@@ -196,11 +206,10 @@ const SignUp = () => {
                   validationSchema={signUpSchema} 
                   onSubmit={onSubmit}
                   enableReinitialize>
-          {({values, setFieldValue, handleChange, handleSubmit,  errors, touched, enableReinitialize}) => 
+          {({values, handleChange, handleSubmit,  errors, touched, enableReinitialize}) => 
 
           (
             <Form  onSubmit={handleSubmit} enableReinitialize={enableReinitialize}>
-              {console.log(values)}
                      <Field 
                       value={values.name}
                       error={errors.name && touched.name}

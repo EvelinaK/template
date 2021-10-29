@@ -132,10 +132,9 @@ const SignIn = () => {
 };
 
 
-  function onSubmit( event ,values, { setStatus, setSubmitting }) {
-    event.preventDefault();
-    setStatus();
+  function onSubmit(values) {
 
+ debugger
     console.log(values)
      console.log('submit')
   }
@@ -184,7 +183,6 @@ const SignIn = () => {
 
           (
             <Form  onSubmit={handleSubmit} enableReinitialize={enableReinitialize}>
-              {console.log(values)}
                       <Field  
                       value={values.email}
                       error={errors.email && touched.email}
